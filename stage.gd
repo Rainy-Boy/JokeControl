@@ -12,8 +12,8 @@ const jokePanelStartingPositionVector = Vector2(1100, -1656)
 const punchlinePanelStartingPositionVector = Vector2(1100, -1328)
 
 var rng = RandomNumberGenerator.new()
-
 var easyMode = true
+var currentButtonValues = {}
 
 var jokesDictionary = {
 	PUN : {
@@ -75,25 +75,29 @@ var testDictionary = {
 	}
 }
 """
-# Called when the node enters the scene tree for the first time.
-func _ready():
 	#print(testDictionary["secondOne"][0])
 	#print(jokesDictionary[PUN].keys().pick_random())
 	#var randomJoke = jokesDictionary[PUN].keys().pick_random()
 	#print(jokesDictionary[PUN][randomJoke][BAD].size())
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
 	setDefaultPositions()
 
+	var tween = get_tree().create_tween().set_parallel(true)
+	tween.tween_property($Camera2D, "zoom", $Camera2D.zoom + Vector2(0.2, 0.2), 5)
+	tween.tween_property($Camera2D, "position", $Camera2D.position - Vector2(0, 300), 5)
+	tween.connect("finished", nextJoke)
+	
+func nextJoke():
 	#var jokeType = rng.randi_range(1, 3)
 	var jokeType = 1
 	var joke = setRandomJoke(jokeType)
 	setRandomPunchlines(joke, jokeType)
 	
-	var tween = get_tree().create_tween().set_parallel(true)
-	tween.tween_property($Camera2D, "zoom", $Camera2D.zoom + Vector2(0.2, 0.2), 5)
-	tween.tween_property($Camera2D, "position", $Camera2D.position - Vector2(0, 300), 5)
 	showJokePanel()
-	tween.connect("finished", showThreePunchlinePanel)
-	
+
 func setDefaultPositions():
 	$JokePanel.position = jokePanelStartingPositionVector
 	$SixPunchlinePanel.position = punchlinePanelStartingPositionVector
@@ -103,9 +107,22 @@ func showJokePanel():
 	var tween = get_tree().create_tween()
 	tween.tween_property($JokePanel, "position", $JokePanel.position - Vector2(1130, 0), 2)
 	
+	if easyMode:
+		tween.connect("finished", showThreePunchlinePanel)
+
+func hideJokePanel():
+	var tween = get_tree().create_tween()
+	tween.tween_property($JokePanel, "position", $JokePanel.position + Vector2(1130, 0), 2)
+
 func showThreePunchlinePanel():
-	var expositionTween = get_tree().create_tween()
-	expositionTween.tween_property($ThreePunchlinePanel, "position", $ThreePunchlinePanel.position - Vector2(1120, 0), 2)
+	var tween = get_tree().create_tween()
+	tween.tween_property($ThreePunchlinePanel, "position", $ThreePunchlinePanel.position - Vector2(1120, 0), 2)
+
+func hideThreePunchlinePanel():
+	var tween = get_tree().create_tween()
+	tween.tween_property($ThreePunchlinePanel, "position", $ThreePunchlinePanel.position + Vector2(1120, 0), 2)
+	
+	tween.connect("finished", nextJoke)
 
 func setRandomJoke(jokeType):
 	var jokeObject = get_node("JokePanel/Joke")
@@ -130,28 +147,41 @@ func setThreePunchlines(joke, jokeType):
 	
 	var punchlineOptions = [BAD, MEDIUM, GOOD]
 	
-	for punchlineObject in punchlineObjects:
+	for i in punchlineObjects.size():
 		var option = punchlineOptions.pick_random()
 		var punchline
 		
-		print(jokeType)
-		print(joke)
-		print(option)
-		
 		if jokesDictionary[jokeType][joke][option].pick_random() != null:
 			punchline = jokesDictionary[jokeType][joke][option].pick_random()
+			currentButtonValues[i + 1] = option
 		else:
 			punchline = listOfShittyEndings.pick_random()
+			currentButtonValues[i + 1] = 0
 		
-		punchlineObject.text = punchline
+		punchlineObjects[i].text = punchline
 		punchlineOptions.erase(option)
+		
 
+func handleButtonPress(points):
+	print(points)
+	
+	hideJokePanel()
+	hideThreePunchlinePanel()
+	
+	
+	
 
 func _on_punchline_button_1_pressed():
 	print("Uzspieda pirmo pogu")
+	var points = currentButtonValues[1]
+	handleButtonPress(points)
 
 func _on_punchline_button_2_pressed():
 	print("Uzspieda otro pogu")
+	var points = currentButtonValues[2]
+	handleButtonPress(points)
 
 func _on_punchline_button_3_pressed():
 	print("Uzspieda trešo pogu")
+	var points = currentButtonValues[3]
+	handleButtonPress(points)
