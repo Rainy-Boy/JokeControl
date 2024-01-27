@@ -1,0 +1,243 @@
+[gd_scene load_steps=8 format=3 uid="uid://do7ktuc1jjwt0"]
+
+[ext_resource type="Texture2D" uid="uid://b4makf2tk7rvo" path="res://Assets/Fons.png" id="1_41cls"]
+[ext_resource type="Script" path="res://stage.gd" id="1_ni11a"]
+[ext_resource type="Texture2D" uid="uid://dtobrv4f6n535" path="res://Assets/Vidus.png" id="2_3xosm"]
+[ext_resource type="Texture2D" uid="uid://bjdci5u7jqjjr" path="res://Assets/Prieksplans.png" id="3_6ywlp"]
+[ext_resource type="Texture2D" uid="uid://05c4slfmgyci" path="res://Assets/Cilveks.png" id="3_mr83j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x5yb1"]
+bg_color = Color(0.717647, 0.572549, 0.392157, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5ag8n"]
+font_size = 70
+
+[node name="Stage" type="Node2D"]
+script = ExtResource("1_ni11a")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+top_level = true
+position = Vector2(0, -992)
+zoom = Vector2(0.33, 0.33)
+
+[node name="Fons" type="Sprite2D" parent="."]
+position = Vector2(6, -987)
+texture = ExtResource("1_41cls")
+metadata/_edit_lock_ = true
+
+[node name="JokePanel" type="Panel" parent="."]
+offset_left = -20.0
+offset_top = -1656.0
+offset_right = 896.0
+offset_bottom = -1364.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_x5yb1")
+
+[node name="Joke" type="Label" parent="JokePanel"]
+offset_left = 4.0
+offset_top = 9.0
+offset_right = 924.0
+offset_bottom = 284.0
+text = "Why is 6 afraid of 7?"
+label_settings = SubResource("LabelSettings_5ag8n")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="SixPunchlinePanel" type="Panel" parent="."]
+visible = false
+offset_left = 1100.0
+offset_top = -1328.0
+offset_right = 2016.54
+offset_bottom = -1036.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_x5yb1")
+
+[node name="PunchlineButton1" type="Button" parent="SixPunchlinePanel"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 16.0
+offset_right = 270.0
+offset_bottom = 144.0
+theme_override_font_sizes/font_size = 46
+metadata/_edit_lock_ = true
+
+[node name="PunchlineText" type="Label" parent="SixPunchlinePanel/PunchlineButton1"]
+layout_mode = 0
+offset_right = 250.0
+offset_bottom = 128.0
+theme_override_font_sizes/font_size = 31
+text = "Because seven ate nine!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="PunchlineButton2" type="Button" parent="SixPunchlinePanel"]
+layout_mode = 0
+offset_left = 325.0
+offset_top = 16.0
+offset_right = 575.0
+offset_bottom = 144.0
+metadata/_edit_lock_ = true
+
+[node name="PunchlineText" type="Label" parent="SixPunchlinePanel/PunchlineButton2"]
+offset_right = 250.0
+offset_bottom = 128.0
+theme_override_font_sizes/font_size = 31
+text = "Another Punchline"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="PunchlineButton3" type="Button" parent="SixPunchlinePanel"]
+layout_mode = 0
+offset_left = 637.0
+offset_top = 16.0
+offset_right = 887.0
+offset_bottom = 144.0
+metadata/_edit_lock_ = true
+
+[node name="PunchlineText" type="Label" parent="SixPunchlinePanel/PunchlineButton3"]
+offset_right = 250.0
+offset_bottom = 128.0
+theme_override_font_sizes/font_size = 31
+text = "Worse punchline"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="PunchlineButton4" type="Button" parent="SixPunchlinePanel"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 155.0
+offset_right = 270.0
+offset_bottom = 283.0
+metadata/_edit_lock_ = true
+
+[node name="PunchlineText" type="Label" parent="SixPunchlinePanel/PunchlineButton4"]
+offset_right = 250.0
+offset_bottom = 128.0
+theme_override_font_sizes/font_size = 31
+text = "Punch"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="PunchlineButton5" type="Button" parent="SixPunchlinePanel"]
+layout_mode = 0
+offset_left = 325.0
+offset_top = 155.0
+offset_right = 575.0
+offset_bottom = 283.0
+metadata/_edit_lock_ = true
+
+[node name="PunchlineText" type="Label" parent="SixPunchlinePanel/PunchlineButton5"]
+offset_right = 250.0
+offset_bottom = 128.0
+theme_override_font_sizes/font_size = 31
+text = "Line"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="PunchlineButton6" type="Button" parent="SixPunchlinePanel"]
+layout_mode = 0
+offset_left = 637.0
+offset_top = 155.0
+offset_right = 887.0
+offset_bottom = 283.0
+metadata/_edit_lock_ = true
+
+[node name="PunchlineText" type="Label" parent="SixPunchlinePanel/PunchlineButton6"]
+offset_right = 250.0
+offset_bottom = 128.0
+theme_override_font_sizes/font_size = 31
+text = "Yeah"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="ThreePunchlinePanel" type="Panel" parent="."]
+offset_left = -20.0
+offset_top = -1328.0
+offset_right = 896.54
+offset_bottom = -1036.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_x5yb1")
+
+[node name="PunchlineButton1" type="Button" parent="ThreePunchlinePanel"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 48.0
+offset_right = 302.0
+offset_bottom = 219.0
+theme_override_font_sizes/font_size = 46
+
+[node name="PunchlineText" type="Label" parent="ThreePunchlinePanel/PunchlineButton1"]
+layout_mode = 0
+offset_right = 282.0
+offset_bottom = 171.0
+theme_override_font_sizes/font_size = 31
+text = "Because seven ate nine!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="PunchlineButton2" type="Button" parent="ThreePunchlinePanel"]
+layout_mode = 0
+offset_left = 317.0
+offset_top = 48.0
+offset_right = 599.0
+offset_bottom = 219.0
+
+[node name="PunchlineText" type="Label" parent="ThreePunchlinePanel/PunchlineButton2"]
+offset_right = 282.0
+offset_bottom = 171.0
+theme_override_font_sizes/font_size = 31
+text = "Another Punchline"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="PunchlineButton3" type="Button" parent="ThreePunchlinePanel"]
+layout_mode = 0
+offset_left = 627.0
+offset_top = 48.0
+offset_right = 909.0
+offset_bottom = 219.0
+
+[node name="PunchlineText" type="Label" parent="ThreePunchlinePanel/PunchlineButton3"]
+offset_right = 282.0
+offset_bottom = 171.0
+theme_override_font_sizes/font_size = 31
+text = "Worse punchline"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="Vidus" type="Sprite2D" parent="."]
+position = Vector2(5, -993)
+texture = ExtResource("2_3xosm")
+metadata/_edit_lock_ = true
+
+[node name="Cilveks" type="Sprite2D" parent="."]
+position = Vector2(-14, -986)
+texture = ExtResource("3_mr83j")
+metadata/_edit_lock_ = true
+
+[node name="Prieksplans" type="Sprite2D" parent="."]
+position = Vector2(-5, -999)
+texture = ExtResource("3_6ywlp")
+metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="SixPunchlinePanel/PunchlineButton1" to="." method="_on_punchline_button_1_pressed"]
+[connection signal="pressed" from="ThreePunchlinePanel/PunchlineButton1" to="." method="_on_punchline_button_1_pressed"]
+[connection signal="pressed" from="ThreePunchlinePanel/PunchlineButton2" to="." method="_on_punchline_button_2_pressed"]
+[connection signal="pressed" from="ThreePunchlinePanel/PunchlineButton3" to="." method="_on_punchline_button_3_pressed"]
