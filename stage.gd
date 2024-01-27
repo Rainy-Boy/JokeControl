@@ -14,6 +14,7 @@ const punchlinePanelStartingPositionVector = Vector2(1100, -1328)
 var rng = RandomNumberGenerator.new()
 var easyMode = true
 var currentButtonValues = {}
+var gameOver = false
 
 @onready var slider = get_node("SliderBackground/CrowdControlSlider")
 
@@ -170,7 +171,16 @@ func _on_punchline_button_3_pressed():
 	print("Uzspieda trešo pogu")
 	var points = currentButtonValues[3]
 	handleButtonPress(points)
-	
 
 func _process(delta):
-	slider.value -= 0.03
+	if !gameOver:
+		slider.value -= 0.03
+
+		if slider.value >= 100:
+			print("You won!")
+			gameOver = true
+		elif slider.value <= 0:
+			print("You lost!")
+			gameOver = true
+	#else:
+		#get_tree().change_scene_to_file("res://starting_screen.tscn")
