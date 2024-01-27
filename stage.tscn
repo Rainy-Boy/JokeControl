@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://do7ktuc1jjwt0"]
+[gd_scene load_steps=9 format=3 uid="uid://do7ktuc1jjwt0"]
 
 [ext_resource type="Texture2D" uid="uid://b4makf2tk7rvo" path="res://Assets/Fons.png" id="1_41cls"]
 [ext_resource type="Script" path="res://stage.gd" id="1_ni11a"]
@@ -11,6 +11,9 @@ bg_color = Color(0.717647, 0.572549, 0.392157, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_5ag8n"]
 font_size = 70
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1e33o"]
+bg_color = Color(0.717647, 0.572549, 0.392157, 1)
 
 [node name="Stage" type="Node2D"]
 script = ExtResource("1_ni11a")
@@ -239,6 +242,23 @@ metadata/_edit_lock_ = true
 position = Vector2(-14, -986)
 texture = ExtResource("3_mr83j")
 metadata/_edit_lock_ = true
+
+[node name="SliderBackground" type="Panel" parent="."]
+offset_left = -715.0
+offset_top = -1589.0
+offset_right = -576.0
+offset_bottom = -1035.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1e33o")
+
+[node name="CrowdControlSlider" type="VSlider" parent="SliderBackground"]
+offset_left = 36.0
+offset_top = 29.0
+offset_right = 101.0
+offset_bottom = 547.0
+step = 0.001
+value = 50.0
+editable = false
+scrollable = false
 
 [node name="Prieksplans" type="Sprite2D" parent="."]
 position = Vector2(-5, -999)
